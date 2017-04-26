@@ -1,0 +1,30 @@
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+  <head>
+    <title>Marvin</title>
+  </head>
+  <body>
+      <div class="view">
+        <h1>Marvin Controller</h1>
+        <img width="640px" height="480px" id="vstream"></img>
+        <div class="input">
+            <span class="pad">
+                <div><button class="control" type="button" id="bUp" onclick="up()">Up</button></div>
+                <div><button class="control" type="button" id="bLeft" onclick="left()">Left</button>
+                <button class="control" type="button" id= "bRight" onclick="right()">Right</button></div>
+                <div><button class="control" type="button" id="bDown" onclick="down()">Down</button></div>
+            </span>
+            <span>
+                <button class="toggle" type="button" id="indTogg" onclick="indTogg()">Toggle</button>
+                <span class="toggle">CO Level</span>
+                <div id="indLight" class="circle-green"></div>
+            </span>
+      </div>
+      <div>
+          <span>Message: </span>
+          <span id="msg"></span>
+      </div>
+  </body>
+</html>
