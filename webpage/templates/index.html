@@ -8,7 +8,7 @@
   <body>
       <div class="view">
         <h1>Marvin Controller</h1>
-        <img width="640px" height="480px" id="vstream"></img>
+        <img src="{{ url_for('video_feed') }}" width="640px" height="480px" id="vstream"></img>
         <div class="input">
             <span class="pad">
                 <div><button class="control" type="button" id="bUp" onclick="up()">Up</button></div>
