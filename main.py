@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response
 from vidstream import camera
 
-app = Flask(__name__, template_folder='./webpage/templates')
+app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -20,4 +20,4 @@ def video_feed():
             mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run()
