@@ -8,10 +8,10 @@ $(document).ready(function() {
         //socket.emit('my_event', {data: 'I\'m connected!'});
         console.log("Socket Connected");
     });
-    commsocket.on('event'), function(msg) {
+    commsocket.on('event', function(msg) {
         console.log("msg");
         console.log(msg);
-    }
+    });
 });
 
 function up() {
