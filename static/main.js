@@ -3,7 +3,7 @@ var commsocket;
 
 $(document).ready(function() {
     console.log("Script Loaded");
-    commsocket = io.connect("http://127.0.0.1:5000/");
+    commsocket = io.connect("http://127.0.0.1:5000/commsocket");
     commsocket.on('connect', function() {
         //socket.emit('my_event', {data: 'I\'m connected!'});
         console.log("Socket Connected");
