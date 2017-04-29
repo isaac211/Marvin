@@ -3,15 +3,21 @@ var commsocket;
 
 $(document).ready(function() {
     console.log("Script Loaded");
-    commsocket = io.connect("http://127.0.0.1:5000/commsocket");
+    commsocket = io.connect("http://"+document.domain + ":" + location.port +
+        "/commsocket");
     commsocket.on('connect', function() {
-        //socket.emit('my_event', {data: 'I\'m connected!'});
         console.log("Socket Connected");
     });
     commsocket.on('event', function(msg) {
-        console.log("msg");
-        console.log(msg);
+        if (msg.type && msg.type == "CO") {
+            if (msg.toggle) {
+                indTogg();
+            }
+        }
     });
+    window.setInterval(function() {
+        commsocket.emit('event', {"type": "co_req"});
+    }, 1000);
 });
 
 function up() {
