@@ -1,6 +1,7 @@
 #vidstream.py
 import cv2
 
+#Camera class; retrieves JPEG stream
 class camera(object):
     def __init__(self):
         #OpenCV will capture from device 0
