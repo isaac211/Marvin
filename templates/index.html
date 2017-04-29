@@ -1,5 +1,6 @@
 <html>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
   <head>
@@ -8,7 +9,7 @@
   <body>
       <div class="view">
         <h1>Marvin Controller</h1>
-        <img src="{{ url_for('video_feed') }}" width="640px" height="480px" id="vstream"></img>
+        <img src="http://img13.deviantart.net/a279/i/2006/092/7/3/don_t_panic_by_everfalling.png" width="640px" height="480px" id="vstream"></img>
         <div class="input">
             <span class="pad">
                 <div><button class="control" type="button" id="bUp" onclick="up()">Up</button></div>
@@ -17,7 +18,6 @@
                 <div><button class="control" type="button" id="bDown" onclick="down()">Down</button></div>
             </span>
             <span>
-                <button class="toggle" type="button" id="indTogg" onclick="indTogg()">Toggle</button>
                 <span class="toggle">CO Level</span>
                 <div id="indLight" class="circle-green"></div>
             </span>
