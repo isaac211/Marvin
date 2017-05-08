@@ -94,14 +94,26 @@ while True:
         motor2_forward()
         motor2.ChangeDutyCycle(99)
 
+    if(char == "q"):
+        toggleSteering("left")
+        motor2_forward()
+        motor2.ChangeDutyCycle(99)
+
+    if(char == "e"):
+        toggleSteering("right")
+        motor2_forward()
+        motor2.ChangeDutyCycle(99)
+
     if(char == "s"):
         motor2_reverse()
         motor2.ChangeDutyCycle(99)
 
     if(char == "a"):
+        motor2_reverse()
         toggleSteering("left")
 
     if(char == "d"):
+        motor2_reverse()
         toggleSteering("right")
 
     if(char == "x"):
