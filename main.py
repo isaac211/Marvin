@@ -1,14 +1,57 @@
 from flask import Flask, render_template, Response
 from flask_socketio import SocketIO, send, emit
 from vidstream import camera
+import RPi.GPIO as io
+io.setmode(io.BOARD)
+import sys, tty, termios, time
 
-import sys
+io.setup(7, io.OUT)
+io.setup(11, io.OUT)
+io.setup(32, io.OUT)
+io.setup(36, io.OUT)
+
+motor1_in1_pin = 7
+motor1_in2_pin = 11
+
+motor2_in1_pin = 32
+motor2_in2_pin = 36
+
+#PWM pins set to false by default
+io.output(motor1_in1_pin, io.LOW)
+io.output(motor1_in2_pin, io.LOW)
+io.output(motor2_in1_pin, io.LOW)
+io.output(motor2_in2_pin, io.LOW)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'WISM-SOCKET_lyoko_xana_3835%'
 socketio = SocketIO(app)
 
 COState = False
+
+#Motor direction controls.
+def motor1_forward():
+    io.output(motor1_in1_pin, io.HIGH)
+    io.output(motor1_in2_pin, io.LOW)
+
+def motor1_reverse():
+    io.output(motor1_in1_pin, io.LOW)
+    io.output(motor1_in2_pin, io.HIGH)
+
+def motor2_forward():
+    io.output(motor2_in1_pin, io.HIGH)
+    io.output(motor2_in2_pin, io.LOW)
+    io.output(motor1_in1_pin, io.HIGH)
+
+def motor2_reverse():
+    io.output(motor2_in1_pin, io.LOW)
+    io.output(motor2_in2_pin, io.HIGH)
+    io.output(motor1_in1_pin, io.HIGH)
+
+def stop_motors():
+    io.output(motor1_in1_pin, io.LOW)
+    io.output(motor1_in2_pin, io.LOW)
+    io.output(motor2_in1_pin, io.LOW)
+    io.output(motor2_in2_pin, io.LOW)
 
 @app.route('/')
 def index():
@@ -43,18 +86,18 @@ def error(e):
 @socketio.on('event', namespace="/commsocket")
 def event(msg):
     if (msg["type"] and msg["type"] == "move"):
-
-        #TODO Matt, add your code for movement here!
-        # msg["direction"] will have one of four values: "forward",
-        # "backward", "left", or "right". This is flexible
         if (msg["direction"] == "forward"):
-            pass
+            stop_motors()
+            motor1_forward()
         if (msg["direction"] == "backward"):
-            pass
+            stop_motors()
+            motor1_reverse()
         if (msg["direction"] == "left"):
-            pass
+            motor2_forward()
         if (msg["direction"] == "right"):
-            pass
+            motor2_reverse()
+        if (msg["direction"] == "stop"):
+            stop_motors()
         # Delete these lines after you're done:
         print("Moving " + msg["direction"])
         sys.stdout.flush()

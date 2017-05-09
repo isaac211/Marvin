@@ -2,10 +2,10 @@ import RPi.GPIO as io
 io.setmode(io.BOARD)
 import sys, tty, termios, time
 
-GPIO.setup(7, GPIO.OUT)
-GPIO.setup(11, GPIO.OUT)
-GPIO.setup(32, GPIO.OUT)
-GPIO.setup(36, GPIO.OUT)
+io.setup(7, io.OUT)
+io.setup(11, io.OUT)
+io.setup(32, io.OUT)
+io.setup(36, io.OUT)
 
 motor1_in1_pin = 7
 motor1_in2_pin = 11

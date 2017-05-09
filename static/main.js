@@ -60,6 +60,16 @@ function right() {
     commsocket.emit('event', rightMsg);
 }
 
+function stop() {
+    msgOut("Stop pressed!");
+    console.log("Stop");
+    var stopMsg = {
+        type: "move",
+        direction: "stop"
+    };
+    commsocket.emit('event', stopMsg);
+}
+
 function indTogg() {
     var light = document.getElementById("indLight");
     if (light.className === "circle-green") {
