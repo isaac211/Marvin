@@ -18,6 +18,10 @@ $(document).ready(function() {
     window.setInterval(function() {
         commsocket.emit('event', {"type": "co_req"});
     }, 1000);
+
+    $("body").on("keypress", function(e) {
+        stop();
+    });
 });
 
 function up() {
