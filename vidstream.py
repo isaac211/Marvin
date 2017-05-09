@@ -19,5 +19,5 @@ class camera(object):
         if not success:
             print("Failed to capture!")
         #Set motion JPG as capture standard
-        ret, jpeg = cv2.imencode('.jpg',image)
+        ret, jpeg = cv2.imencode('.jpg',cv2.flip(image,0))
         return jpeg.tobytes()
