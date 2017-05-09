@@ -1,7 +1,6 @@
 #vidstream.py
 import cv2
 
-#Camera class; retrieves JPEG stream
 class camera(object):
     def __init__(self):
         #OpenCV will capture from device 0
@@ -19,5 +18,5 @@ class camera(object):
         if not success:
             print("Failed to capture!")
         #Set motion JPG as capture standard
-        ret, jpeg = cv2.imencode('.jpg',cv2.flip(image,0))
+        ret, jpeg = cv2.imencode('.jpg',cv2.flip(image,0), [int(cv2.IMWRITE_JPEG_QUALITY), 15])
         return jpeg.tobytes()
