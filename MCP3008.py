@@ -1,6 +1,6 @@
 from spidev import SpiDev
 
-# This was obtained from the github at https://github.com/tutRPi/Raspberry-Pi-Gas-Sensor-MQ. Minor modifications were made to give only CO sensing.
+# This was obtained from the github at https://github.com/tutRPi/Raspberry-Pi-Gas-Sensor-MQ. It reads values from the ADC.
 
 class MCP3008:
     def __init__(self, bus = 0, device = 0):

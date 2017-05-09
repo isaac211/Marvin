@@ -1,4 +1,3 @@
-
 # This was obtained from the github at https://github.com/tutRPi/Raspberry-Pi-Gas-Sensor-MQ. Minor modifications were made to give only CO sensing.
 
 # adapted from sandboxelectronics.com/?p=165
@@ -46,7 +45,7 @@ class MQ():
     
     def MQPercentage(self):
         val = {}
-        read = self.MQRead(self.MQ_PIN)
+        read = self.MQRead(self.MQ_PIN) + .01
         val["CO"]       = self.MQGetGasPercentage(read/self.Ro, self.GAS_CO)
         return val
         
@@ -110,7 +109,7 @@ class MQ():
     #          calculates the ppm (parts per million) of the target gas.
     ############################################################################ 
     def MQGetGasPercentage(self, rs_ro_ratio, gas_id):
-        elif ( gas_id == self.GAS_CO ):
+        if ( gas_id == self.GAS_CO ):
             return self.MQGetPercentage(rs_ro_ratio, self.COCurve)
         return 0
      
